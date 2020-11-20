@@ -1,3 +1,6 @@
 [submodule "pallets/substrate-auction-pallet"]
 	path = pallets/substrate-auction-pallet
 	url = https://github.com/iStrike7/substrate-auction-pallet.git
+[submodule "pallets/pallet-nft"]
+	path = pallets/pallet-nft
+	url = https://github.com/danforbes/pallet-nft.git
