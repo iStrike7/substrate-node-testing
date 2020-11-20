@@ -1,0 +1,3 @@
+[submodule "pallets/substrate-auction-pallet"]
+	path = pallets/substrate-auction-pallet
+	url = https://github.com/iStrike7/substrate-auction-pallet.git
