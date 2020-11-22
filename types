@@ -1,0 +1,5 @@
+{
+  "CommodityInfo": "Vec<u8>",
+  "CommodityId": "frame_system::Trait::Hash",
+  "Commodity": "(Vec<u8>, frame_system::Trait::Hash)"
+}

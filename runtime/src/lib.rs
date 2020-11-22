@@ -38,6 +38,8 @@ pub use frame_support::{
 	},
 };
 
+pub use frame_system::EnsureRoot;
+
 /// Import the template pallet.
 pub use pallet_template;
 
@@ -266,6 +268,27 @@ impl pallet_template::Trait for Runtime {
 	type Event = Event;
 }
 
+
+// Added for pallet-commodities
+
+parameter_types! {
+    pub const NFTCommodityLimit: u128 = 256;
+    pub const NFTUserCommodityLimit: u64 = 32;
+}
+
+impl pallet_commodities::Trait for Runtime {
+
+	    /// The dispatch origin that is able to mint new instances of this type of commodity.
+	    type CommodityAdmin= EnsureRoot<AccountId>;
+	    /// The data type that is used to describe this type of commodity.
+	    type CommodityInfo = Vec<u8>;
+	    /// The maximum number of this type of commodity that may exist (minted - burned).
+	    type CommodityLimit= NFTCommodityLimit;
+	    /// The maximum number of this type of commodity that any single account may own.
+	    type UserCommodityLimit= NFTUserCommodityLimit;
+	    type Event= Event;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -283,6 +306,7 @@ construct_runtime!(
 		Sudo: pallet_sudo::{Module, Call, Config<T>, Storage, Event<T>},
 		// Include the custom logic from the template pallet in the runtime.
 		TemplateModule: pallet_template::{Module, Call, Storage, Event<T>},
+		NFTs: pallet_commodities::{Module, Call, Storage, Event<T>},
 	}
 );
 

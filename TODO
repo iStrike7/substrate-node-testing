@@ -1,0 +1,4 @@
+let burn_commodity = (*commodity_id, <T as Trait<I>>::CommodityInfo::default());
+let xfer_commodity = (*commodity_id, <T as Trait<I>>::CommodityInfo::default());
+
+This is the problem. The default value.
